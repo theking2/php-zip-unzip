@@ -4,7 +4,7 @@ if( 'go'=== ($_POST['action']??false)) {
 $zip = new ZipArchive;
   
 // Zip File Name
-if ($zip->open('archiv-20220901-154057.zip') === TRUE) {
+if ($zip->open($_POST['filename']) === TRUE) {
   
     // Unzip Path
     $zip->extractTo('./');
