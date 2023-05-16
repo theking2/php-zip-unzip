@@ -10,3 +10,5 @@ Two files to easy zip and unzip a website
 1. Upload the archive and __unzip.php file to the destination webspace
 2. Open the __unzip.php file in a browser (https://web.destination.tld/__unzip.php)
 3. Select the ZIP file. and hit unzip
+
+The txt file with additional characters in the name is included to test what encoding needs to be used. I came accross discrepancies between windows and linux hosted files. 
