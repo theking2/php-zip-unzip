@@ -31,8 +31,10 @@ class MakeZip
   {
     echo $folder . '<br>' . PHP_EOL;
     foreach (new \DirectoryIterator($folder) as $f) {
-      if ($f->isDot()) continue; //skip . ..
+      if ($f->isDot())
+        continue; //skip . ..
       if ($f->isDir()) {
+        if( $f->getExtension() === 'git') continue; // skip .git folder
         $this-> zipArchive-> addEmptyDir($f->getPathname());
         $this-> zipDir($f->getPathname());
 
