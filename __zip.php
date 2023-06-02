@@ -1,17 +1,19 @@
 <?php declare(strict_types=1);
-phpinfo(1);
+phpinfo( 1 );
 class MakeZip
 {
   private ZipArchive $zipArchive;
   private int $startPathLength; // chars to remove from the start for the stored entity
 
-  public function __construct( string $zipArchiveName, string $startPath )
-  {
+  public function __construct(
+    string $zipArchiveName,
+    string $startPath
+  ) {
     $this->zipArchive = new \ZipArchive;
     $this->zipArchive->open( $zipArchiveName, ZipArchive::CREATE );
     $this->startPathLength = strlen( $startPath );
 
-    $this-> zipDir($startPath);
+    $this->zipDir( $startPath );
   }
   public function __destruct()
   {
@@ -53,15 +55,15 @@ class MakeZip
   }
 }
 
-$start = microtime(true);
+$start = microtime( true );
 
 $host = str_replace( '.', '_', $_SERVER[ 'HTTP_HOST' ] );
 $date = date( 'Ymd-His' );
 
-$zip = new \MakeZip("./archiv-$host-$date.zip", './');
-unset($zip);
+$zip = new \MakeZip( "./archiv-$host-$date.zip", './' );
+unset( $zip );
 
 
-$end = microtime(true);
-printf('Done in %0.6f sec.</br>', $end - $start);
+$end = microtime( true );
+printf( 'Done in %0.6f sec.</br>', $end - $start );
 echo "<a href=\"./archiv-$host-$date.zip\">Download</a>";
