@@ -46,8 +46,10 @@ class MakeZip
         if( $f->getExtension() === 'zip' )
           continue; // skip ZIP files
 
-        $this->zipArchive->addFile( substr( $f->getPathname(), $this->startPathLength ) ); // remove './'
-
+        if( !$this->zipArchive->addFile( $f->getRealPath(), substr( $f->getPathname(), $this->startPathLength ) ) ) { // remove './'
+          throw new \InvalidArgumentException( 'Cannot add file ' . $f->getPathname() );
+        }
+        
         continue;
       }
 
