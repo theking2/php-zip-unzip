@@ -1,5 +1,5 @@
 <?php declare(strict_types=1);
-phpinfo( 1 );
+
 class MakeZip
 {
   private ZipArchive $zipArchive;
@@ -66,4 +66,5 @@ unset( $zip );
 
 $end = microtime( true );
 printf( 'Done in %0.6f sec.</br>', $end - $start );
+
 echo "<a href=\"./archiv-$host-$date.zip\">Download</a>";
